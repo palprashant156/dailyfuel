@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import axios from "axios";
 
 const BEVERAGES = [
   { name: "Coca Cola", price: 20 },
@@ -34,6 +35,9 @@ const VEG_FOODS = [
 
 const BANKS = ["HDFC", "AXIS", "SBI"];
 const PAYMENT_MODES = ["DEBIT", "CREDIT", "NETBANKING"];
+
+// CHANGE THIS to your Render backend URL:
+const BACKEND_URL = "https://dailyfueel-backend.onrender.com";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -234,15 +238,28 @@ function App() {
         <div className="netbanking-content animate-fadein">
           <form
             className="netbanking-form"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const seat = generateSeatNumber();
               setSeatNumber(seat);
-              setReservation({
-                name: customerName,
-                regno: customerRegNo,
-                seat,
-              });
+              try {
+                const res = await axios.post(
+                  `${BACKEND_URL}/api/reservations`,
+                  {
+                    name: customerName,
+                    regno: customerRegNo,
+                    seat,
+                  }
+                );
+                setReservation(res.data);
+              } catch (err) {
+                alert("Failed to save reservation!");
+                setReservation({
+                  name: customerName,
+                  regno: customerRegNo,
+                  seat,
+                });
+              }
               setShowAlert(true);
             }}
           >
@@ -282,15 +299,28 @@ function App() {
           <div className="cardpay-title">SECURITY:128 BIT SSL ENCRYPTION</div>
           <form
             className="cardpay-form"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const seat = generateSeatNumber();
               setSeatNumber(seat);
-              setReservation({
-                name: customerName,
-                regno: customerRegNo,
-                seat,
-              });
+              try {
+                const res = await axios.post(
+                  `${BACKEND_URL}/api/reservations`,
+                  {
+                    name: customerName,
+                    regno: customerRegNo,
+                    seat,
+                  }
+                );
+                setReservation(res.data);
+              } catch (err) {
+                alert("Failed to save reservation!");
+                setReservation({
+                  name: customerName,
+                  regno: customerRegNo,
+                  seat,
+                });
+              }
               setShowAlert(true);
             }}
           >
