@@ -1,0 +1,1317 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: url('./assets/login.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* Animated overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(60, 60, 120, 0.10);
+  backdrop-filter: blur(6px) brightness(0.97);
+  z-index: 0;
+  animation: overlayFadeIn 1.5s ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.login-container {
+  position: relative;
+  z-index: 1;
+  min-width: 420px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 40px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border: 2.5px solid #bfc9db;
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  margin: 2rem 0;
+  animation: formFadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hotel-title {
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #111;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  text-shadow: 0 4px 12px #bfc9db, 0 2px 0 #fff;
+  line-height: 1.1;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.login-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.login-label, .login-label-bold {
+  display: none;
+}
+
+.login-input {
+  width: 100%;
+  height: 48px;
+  font-size: 1.1rem;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  transition: border 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.login-input::placeholder {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: center;
+  opacity: 1;
+}
+
+.login-input:focus {
+  background: #fff;
+  box-shadow: 0 4px 16px 0 rgba(60,60,120,0.13);
+}
+
+.login-button {
+  margin-top: 1.2rem;
+  width: 100%;
+  min-width: 160px;
+  max-width: 320px;
+  height: 48px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffe29f 0%, #ffc47e 100%);
+  color: #4a3c1a;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.15s, box-shadow 0.3s;
+  letter-spacing: 0.5px;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-transform: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-button-bold {
+  font-weight: 700;
+}
+
+.login-button:hover, .login-button:focus {
+  background: linear-gradient(90deg, #ffc47e 0%, #ffe29f 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+  background: linear-gradient(90deg, #ffe29f 0%, #ffc47e 100%);
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    min-width: 90vw;
+    padding: 2rem 0.5rem;
+  }
+  .hotel-title {
+    font-size: 2.1rem;
+  }
+  .login-input {
+    font-size: 1.1rem;
+    height: 44px;
+  }
+  .login-button {
+    font-size: 1.2rem;
+    height: 44px;
+  }
+}
+
+.welcome-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/food.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.welcome-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.45);
+  z-index: 1;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.7);
+  border-radius: 32px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #d35400;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.welcome-msg {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 0;
+}
+
+.welcome-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.welcome-btn {
+  min-width: 140px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  outline: none;
+  margin: 0 0.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  position: relative;
+}
+
+.veg-btn {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.veg-btn::before {
+  content: '\1F966'; /* 🥦 */
+  font-size: 1.3em;
+  margin-right: 0.7em;
+}
+
+.beverage-btn {
+  background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+  color: #7a4f01;
+}
+
+.beverage-btn::before {
+  content: '\1F964'; /* 🥤 */
+  font-size: 1.3em;
+  margin-right: 0.7em;
+}
+
+.welcome-btn:hover, .welcome-btn:focus {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+  filter: brightness(1.08);
+}
+
+.beverage-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/beverage.webp') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.beverage-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.85);
+  border-radius: 32px;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+  min-width: 340px;
+}
+
+.beverage-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.beverage-listbox {
+  width: 220px;
+  height: 180px;
+  font-size: 1.3rem;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  margin-bottom: 3.5rem;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+
+.beverage-listbox option {
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+}
+
+.beverage-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.beverage-pay-btn {
+  min-width: 100px;
+  height: 48px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+  color: #7a4f01;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.beverage-pay-btn:hover, .beverage-pay-btn:focus {
+  background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.beverage-amount-input {
+  width: 90px;
+  height: 44px;
+  font-size: 1.2rem;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  padding: 0 0.7rem;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  text-align: center;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.beverage-amount-input:focus {
+  border: 2px solid #f7971e;
+  box-shadow: 0 4px 16px 0 rgba(60,60,120,0.13);
+}
+
+.beverage-qty-dropdown {
+  width: 70px;
+  height: 44px;
+  font-size: 1.1rem;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  padding: 0 0.7rem;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  text-align: center;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin: 0 0.7rem;
+}
+
+.beverage-qty-dropdown:focus {
+  border: 2px solid #f7971e;
+  box-shadow: 0 4px 16px 0 rgba(60,60,120,0.13);
+}
+
+.bank-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/bank.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.bank-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.85);
+  border-radius: 32px;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+  min-width: 340px;
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadein {
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bank-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1a237e;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-shadow: 0 2px 16px rgba(60,60,120,0.10);
+  animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bank-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bank-btn {
+  min-width: 160px;
+  padding: 1.1rem 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #e3e9ff 0%, #f5f7fa 100%);
+  color: #1a237e;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s, color 0.2s;
+  outline: none;
+  letter-spacing: 1px;
+  margin: 0.2rem 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bank-btn:hover, .bank-btn:focus {
+  background: linear-gradient(90deg, #cfd9ff 0%, #e3e9ff 100%);
+  color: #3949ab;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.payment-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/cards.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.payment-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.10);
+  border-radius: 32px;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  text-align: center;
+  min-width: 340px;
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.payment-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e53935;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-shadow: 0 2px 16px rgba(60,60,120,0.10);
+  text-transform: uppercase;
+  animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.payment-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.payment-btn {
+  min-width: 240px;
+  padding: 1.1rem 2.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  background: #f5f7fa;
+  color: #1565c0;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s, color 0.2s;
+  outline: none;
+  letter-spacing: 2px;
+  margin: 0.2rem 0;
+  text-transform: uppercase;
+  animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.payment-btn:hover, .payment-btn:focus {
+  background: #e3e9ff;
+  color: #003c8f;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.cardpay-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/payment.avif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.cardpay-content {
+  background: rgba(20,20,20,0.85);
+  border-radius: 18px;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  min-width: 600px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cardpay-title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.2rem;
+  letter-spacing: 2px;
+}
+
+.cardpay-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cardpay-label {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.cardpay-input {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: #444;
+  color: #fff;
+  margin-top: 0.4rem;
+  margin-bottom: 0.7rem;
+  padding: 0 1rem;
+  outline: none;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.cardpay-input:focus {
+  background: #222;
+  box-shadow: 0 4px 16px 0 rgba(60,60,120,0.13);
+}
+
+.cardpay-row {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.cardpay-row .cardpay-label {
+  flex: 1;
+}
+
+.cardpay-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+  justify-content: flex-start;
+}
+
+.cardpay-pay-btn {
+  min-width: 220px;
+  height: 48px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #e0e0e0;
+  color: #4dd0e1;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, color 0.2s, transform 0.15s, box-shadow 0.25s;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.cardpay-pay-btn:hover, .cardpay-pay-btn:focus {
+  background: #b2ebf2;
+  color: #006064;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.cardpay-back-btn {
+  min-width: 120px;
+  height: 48px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  background: #e53935;
+  color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, color 0.2s, transform 0.15s, box-shadow 0.25s;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.cardpay-back-btn:hover, .cardpay-back-btn:focus {
+  background: #b71c1c;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.thankyou-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.thankyou-content {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.thankyou-check {
+  font-size: 6rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.thankyou-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.thankyou-msg {
+  font-size: 1.1rem;
+  color: #888;
+}
+
+.thankyou-seat {
+  margin-top: 2.2rem;
+  font-size: 2rem;
+  color: #43e97b;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: glow 1.5s alternate infinite;
+  text-shadow: 0 2px 16px #ffb34744, 0 1px 8px #43e97b44;
+}
+
+.netbanking-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/netbanking.avif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.netbanking-warning {
+  width: 100vw;
+  text-align: center;
+  color: #c62828;
+  font-size: 2rem;
+  font-family: 'Caveat', 'Brush Script MT', cursive;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 16px rgba(60,60,60,0.10);
+}
+
+.netbanking-content {
+  background: rgba(20,20,20,0.85);
+  border-radius: 18px;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  min-width: 500px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+.netbanking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.netbanking-label {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+  font-family: 'Caveat', 'Brush Script MT', cursive;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.netbanking-input {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: #444;
+  color: #fff;
+  margin-top: 0.4rem;
+  margin-bottom: 0.7rem;
+  padding: 0 1rem;
+  outline: none;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.netbanking-input:focus {
+  background: #222;
+  box-shadow: 0 4px 16px 0 rgba(60,60,120,0.13);
+}
+
+.netbanking-pay-btn {
+  min-width: 180px;
+  height: 48px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #8e24aa;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, color 0.2s, transform 0.15s, box-shadow 0.25s;
+  outline: none;
+  letter-spacing: 1px;
+  margin-top: 1.5rem;
+  font-family: 'Caveat', 'Brush Script MT', cursive;
+  font-style: italic;
+}
+
+.netbanking-pay-btn:hover, .netbanking-pay-btn:focus {
+  background: #f3e5f5;
+  color: #4a148c;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.veg-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/veg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.veg-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.5);
+  border-radius: 32px;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+  min-width: 900px;
+}
+
+.veg-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-shadow: 0 2px 16px rgba(60,60,120,0.10);
+}
+
+.veg-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.veg-listbox {
+  width: 260px;
+  height: 220px;
+  font-size: 2rem;
+  border: 3px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+
+.veg-listbox option {
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+}
+
+.veg-speciality {
+  width: 400px;
+  height: 220px;
+  font-size: 1.25rem;
+  border: 3px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  padding: 1rem;
+  resize: none;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.veg-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.veg-next-btn {
+  min-width: 160px;
+  height: 56px;
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.25s, color 0.2s, transform 0.15s, box-shadow 0.25s;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.veg-next-btn:hover, .veg-next-btn:focus {
+  background: #e3e9ff;
+  color: #3949ab;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px 0 rgba(60,60,120,0.18);
+}
+
+.veg-price-input {
+  width: 120px;
+  height: 44px;
+  font-size: 1.5rem;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  padding: 0 0.7rem;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  text-align: center;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.veg-price-label {
+  font-size: 1.5rem;
+  color: #111;
+  margin-left: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 0px 0px #ffb347, 0 0 0px 0px #43e97b; }
+  50% { box-shadow: 0 0 16px 4px #ffb347, 0 0 24px 8px #43e97b; }
+  100% { box-shadow: 0 0 0px 0px #ffb347, 0 0 0px 0px #43e97b; }
+}
+
+@keyframes fadeInList {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Animated card entrance for all .content classes */
+.veg-content, .beverage-content, .bank-content, .payment-content, .cardpay-content, .netbanking-content, .welcome-content, .thankyou-content {
+  animation: fadeInList 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Animated, colorful buttons */
+.veg-next-btn, .beverage-pay-btn, .welcome-btn, .bank-btn, .payment-btn, .cardpay-pay-btn, .cardpay-back-btn, .netbanking-pay-btn {
+  background: linear-gradient(90deg, #ffb347 0%, #43e97b 100%);
+  color: #fff !important;
+  border: none;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  transition: background 0.3s, color 0.2s, transform 0.15s, box-shadow 0.25s, filter 0.3s;
+  animation: rainbow 2.5s linear infinite;
+  position: relative;
+  overflow: hidden;
+}
+.veg-next-btn:hover, .beverage-pay-btn:hover, .welcome-btn:hover, .bank-btn:hover, .payment-btn:hover, .cardpay-pay-btn:hover, .cardpay-back-btn:hover, .netbanking-pay-btn:hover,
+.veg-next-btn:focus, .beverage-pay-btn:focus, .welcome-btn:focus, .bank-btn:focus, .payment-btn:focus, .cardpay-pay-btn:focus, .cardpay-back-btn:focus, .netbanking-pay-btn:focus {
+  background: linear-gradient(90deg, #43e97b 0%, #ffb347 100%);
+  color: #fff;
+  animation: glow 1.2s alternate infinite;
+  filter: brightness(1.1) saturate(1.2);
+  transform: scale(1.05);
+}
+
+/* Animated listbox and options */
+.veg-listbox, .beverage-listbox {
+  animation: fadeInList 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 3px solid #43e97b;
+  background: linear-gradient(120deg, #fff 80%, #e0ffe0 100%);
+  color: #222;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.veg-listbox:focus, .beverage-listbox:focus {
+  border: 3px solid #ffb347;
+  box-shadow: 0 0 12px 2px #ffb34744;
+}
+.veg-listbox option, .beverage-listbox option {
+  animation: fadeInList 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: background 0.2s, color 0.2s;
+  border-radius: 6px;
+  margin: 2px 0;
+}
+.veg-listbox option:checked, .beverage-listbox option:checked {
+  background: linear-gradient(90deg, #43e97b 0%, #ffb347 100%);
+  color: #fff;
+  font-weight: 700;
+}
+
+.customer-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/customer.avif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.customer-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.6);
+  border-radius: 32px;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+  min-width: 600px;
+  animation: fadeInList 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.customer-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-shadow: 0 2px 16px rgba(60,60,120,0.10);
+}
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.customer-label {
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 1px;
+  animation: fadeInList 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.customer-input {
+  width: 320px;
+  height: 44px;
+  font-size: 1.3rem;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  padding: 0 0.7rem;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+  outline: none;
+  text-align: center;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  animation: fadeInList 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.customer-input:focus {
+  border: 2px solid #43e97b;
+  box-shadow: 0 0 12px 2px #43e97b44;
+}
+
+.customer-book-btn {
+  min-width: 180px;
+  height: 56px;
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffb347 0%, #43e97b 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.15s, box-shadow 0.25s, filter 0.3s;
+  outline: none;
+  letter-spacing: 1px;
+  margin-top: 1.5rem;
+  animation: rainbow 2.5s linear infinite;
+}
+
+.customer-book-btn:hover, .customer-book-btn:focus {
+  background: linear-gradient(90deg, #43e97b 0%, #ffb347 100%);
+  color: #fff;
+  animation: glow 1.2s alternate infinite;
+  filter: brightness(1.1) saturate(1.2);
+  transform: scale(1.05);
+}
+
+.reservation-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('./assets/reservation.avif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+}
+
+.reservation-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.85);
+  border-radius: 32px;
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+  min-width: 900px;
+  animation: fadeInList 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reservation-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-shadow: 0 2px 16px rgba(60,60,120,0.10);
+}
+
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 1.3rem;
+  box-shadow: 0 2px 8px 0 rgba(60,60,120,0.10);
+}
+.reservation-table th, .reservation-table td {
+  border: 1px solid #ccc;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+.reservation-table th {
+  background: #f5f7fa;
+  color: #3949ab;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.reservation-table td {
+  background: #fff;
+  color: #222;
+  font-size: 1.1rem;
+}
+
+/* Alert modal styles */
+.alert-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 100;
+}
+
+.alert-content {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  min-width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  text-align: center;
+  animation: fadeInList 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.alert-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #3949ab;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.alert-actions {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.alert-btn {
+  min-width: 100px;
+  height: 48px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffb347 0%, #43e97b 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.15s, box-shadow 0.25s, filter 0.3s;
+  outline: none;
+  letter-spacing: 1px;
+  animation: rainbow 2.5s linear infinite;
+}
+
+.alert-btn:hover, .alert-btn:focus {
+  background: linear-gradient(90deg, #43e97b 0%, #ffb347 100%);
+  color: #fff;
+  animation: glow 1.2s alternate infinite;
+  filter: brightness(1.1) saturate(1.2);
+  transform: scale(1.05);
+}
