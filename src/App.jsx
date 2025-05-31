@@ -249,11 +249,6 @@ function App() {
                     name: customerName,
                     regno: customerRegNo,
                     seat: seat,
-                  },
-                  {
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
                   }
                 );
                 if (response.data) {
@@ -262,24 +257,7 @@ function App() {
                 }
               } catch (error) {
                 console.error("Error saving reservation:", error);
-                if (error.response) {
-                  // The request was made and the server responded with a status code
-                  // that falls out of the range of 2xx
-                  console.error("Error response:", error.response.data);
-                  alert(
-                    `Failed to save reservation: ${
-                      error.response.data.error || "Please try again."
-                    }`
-                  );
-                } else if (error.request) {
-                  // The request was made but no response was received
-                  console.error("No response received:", error.request);
-                  alert("Server is not responding. Please try again later.");
-                } else {
-                  // Something happened in setting up the request that triggered an Error
-                  console.error("Error setting up request:", error.message);
-                  alert("Failed to save reservation! Please try again.");
-                }
+                alert("Failed to save reservation! Please try again.");
               }
             }}
           >
@@ -324,22 +302,24 @@ function App() {
               const seat = generateSeatNumber();
               setSeatNumber(seat);
               try {
-                const response = await axios.post(
+                const res = await axios.post(
                   `${BACKEND_URL}/api/reservations`,
                   {
                     name: customerName,
                     regno: customerRegNo,
-                    seat: seat,
+                    seat,
                   }
                 );
-                if (response.data) {
-                  setReservation(response.data);
-                  setShowAlert(true);
-                }
-              } catch (error) {
-                console.error("Error saving reservation:", error);
-                alert("Failed to save reservation! Please try again.");
+                setReservation(res.data);
+              } catch (err) {
+                alert("Failed to save reservation!");
+                setReservation({
+                  name: customerName,
+                  regno: customerRegNo,
+                  seat,
+                });
               }
+              setShowAlert(true);
             }}
           >
             <label className="cardpay-label">
