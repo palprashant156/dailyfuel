@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState } from "react";
-import axios from "axios";
 
 const BEVERAGES = [
   { name: "Coca Cola", price: 20 },
@@ -36,14 +35,11 @@ const VEG_FOODS = [
 const BANKS = ["HDFC", "AXIS", "SBI"];
 const PAYMENT_MODES = ["DEBIT", "CREDIT", "NETBANKING"];
 
-// CHANGE THIS to your Render backend URL:
-const BACKEND_URL = "https://dailyfueel-backend.onrender.com";
-
 function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
-  const [page, setPage] = useState("main"); // 'main' | 'beverage' | 'bank' | 'payment' | 'card' | 'thankyou' | 'netbanking' | 'veg' | 'customer' | 'reservation' | 'alert'
+  const [page, setPage] = useState("main"); // 'main' | 'beverage' | 'bank' | 'payment' | 'card' | 'thankyou' | 'netbanking' | 'veg' | 'customer'
   const [selectedBeverage, setSelectedBeverage] = useState(BEVERAGES[0].name);
   const [quantity, setQuantity] = useState(1);
   const [cardNumber, setCardNumber] = useState("");
@@ -56,18 +52,33 @@ function App() {
   const [customerName, setCustomerName] = useState("");
   const [customerRegNo, setCustomerRegNo] = useState("");
   const [seatNumber, setSeatNumber] = useState(null);
-  const [reservation, setReservation] = useState(null);
-  const [showAlert, setShowAlert] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showReservation, setShowReservation] = useState(false);
 
   const beverageObj = BEVERAGES.find((b) => b.name === selectedBeverage);
   const totalPrice = beverageObj ? beverageObj.price * quantity : "";
   const foodObj = VEG_FOODS.find((f) => f.name === selectedFood);
 
-  // Helper to generate random seat number
-  const generateSeatNumber = () => Math.floor(Math.random() * 100) + 1;
+  // Helper to generate random seat number and show modal
+  const handlePaymentSuccess = () => {
+    const newSeat = Math.floor(Math.random() * 100) + 1;
+    setSeatNumber(newSeat);
+    setShowModal(true);
+  };
 
-  // Reservation page
-  if (loggedIn && page === "reservation" && reservation) {
+  // Modal actions
+  const handleModalYes = () => {
+    setShowModal(false);
+    setShowReservation(true);
+  };
+  const handleModalNo = () => {
+    setShowModal(false);
+    setShowReservation(false);
+    setPage("thankyou");
+  };
+
+  // Reservation details card
+  if (showReservation) {
     return (
       <div className="reservation-bg">
         <div className="reservation-content animate-fadein">
@@ -82,9 +93,9 @@ function App() {
             </thead>
             <tbody>
               <tr>
-                <td>{reservation.name}</td>
-                <td>{reservation.regno}</td>
-                <td>{reservation.seat}</td>
+                <td>{customerName}</td>
+                <td>{customerRegNo}</td>
+                <td>{seatNumber}</td>
               </tr>
             </tbody>
           </table>
@@ -93,35 +104,25 @@ function App() {
     );
   }
 
-  // Yes/No alert after payment
-  if (showAlert) {
-    return (
-      <div className="alert-bg">
-        <div className="alert-content animate-fadein">
-          <div className="alert-title">Do you want to see your record?</div>
-          <div className="alert-actions">
-            <button
-              className="alert-btn"
-              onClick={() => {
-                setShowAlert(false);
-                setPage("reservation");
-              }}
-            >
-              Yes
-            </button>
-            <button
-              className="alert-btn"
-              onClick={() => {
-                setShowAlert(false);
-                setPage("thankyou");
-              }}
-            >
-              No
-            </button>
-          </div>
+  // Modal dialog
+  const Modal = ({ onYes, onNo }) => (
+    <div className="modal-overlay">
+      <div className="modal-card">
+        <div className="modal-title">Do you want to see your record?</div>
+        <div className="modal-actions">
+          <button className="modal-btn modal-yes" onClick={onYes}>
+            Yes
+          </button>
+          <button className="modal-btn modal-no" onClick={onNo}>
+            No
+          </button>
         </div>
       </div>
-    );
+    </div>
+  );
+
+  if (showModal) {
+    return <Modal onYes={handleModalYes} onNo={handleModalNo} />;
   }
 
   if (loggedIn && page === "customer") {
@@ -221,7 +222,7 @@ function App() {
           </p>
           {seatNumber && (
             <div className="thankyou-seat">
-              your reserve seat number is <b>{seatNumber}</b>
+              Your reserve seat number is <b>{seatNumber}</b>
             </div>
           )}
         </div>
@@ -238,27 +239,9 @@ function App() {
         <div className="netbanking-content animate-fadein">
           <form
             className="netbanking-form"
-            onSubmit={async (e) => {
+            onSubmit={(e) => {
               e.preventDefault();
-              const seat = generateSeatNumber();
-              setSeatNumber(seat);
-              try {
-                const response = await axios.post(
-                  `${BACKEND_URL}/api/reservations`,
-                  {
-                    name: customerName,
-                    regno: customerRegNo,
-                    seat: seat,
-                  }
-                );
-                if (response.data) {
-                  setReservation(response.data);
-                  setShowAlert(true);
-                }
-              } catch (error) {
-                console.error("Error saving reservation:", error);
-                alert("Failed to save reservation! Please try again.");
-              }
+              handlePaymentSuccess();
             }}
           >
             <label className="netbanking-label">
@@ -297,29 +280,9 @@ function App() {
           <div className="cardpay-title">SECURITY:128 BIT SSL ENCRYPTION</div>
           <form
             className="cardpay-form"
-            onSubmit={async (e) => {
+            onSubmit={(e) => {
               e.preventDefault();
-              const seat = generateSeatNumber();
-              setSeatNumber(seat);
-              try {
-                const res = await axios.post(
-                  `${BACKEND_URL}/api/reservations`,
-                  {
-                    name: customerName,
-                    regno: customerRegNo,
-                    seat,
-                  }
-                );
-                setReservation(res.data);
-              } catch (err) {
-                alert("Failed to save reservation!");
-                setReservation({
-                  name: customerName,
-                  regno: customerRegNo,
-                  seat,
-                });
-              }
-              setShowAlert(true);
+              handlePaymentSuccess();
             }}
           >
             <label className="cardpay-label">
