@@ -243,24 +243,22 @@ function App() {
               const seat = generateSeatNumber();
               setSeatNumber(seat);
               try {
-                const res = await axios.post(
+                const response = await axios.post(
                   `${BACKEND_URL}/api/reservations`,
                   {
                     name: customerName,
                     regno: customerRegNo,
-                    seat,
+                    seat: seat,
                   }
                 );
-                setReservation(res.data);
-              } catch (err) {
-                alert("Failed to save reservation!");
-                setReservation({
-                  name: customerName,
-                  regno: customerRegNo,
-                  seat,
-                });
+                if (response.data) {
+                  setReservation(response.data);
+                  setShowAlert(true);
+                }
+              } catch (error) {
+                console.error("Error saving reservation:", error);
+                alert("Failed to save reservation! Please try again.");
               }
-              setShowAlert(true);
             }}
           >
             <label className="netbanking-label">
